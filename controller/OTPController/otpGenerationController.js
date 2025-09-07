@@ -16,8 +16,8 @@ async function createTransporter(){
         oauth2Client.getAccessToken((err, token) => {
             if (err) {
                 console.log(err);
-                resolve(process.env.ACCESS_TOKEN);
-                // reject("Failed to create access token");
+                // resolve(process.env.ACCESS_TOKEN);
+                reject("Failed to create access token");
             }
             resolve(token);
         });

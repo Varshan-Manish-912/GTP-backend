@@ -1,7 +1,9 @@
 import express from "express";
 import routeHandler from "./routes/index.js";
 import databaseConfig from "./config/databaseConfig.js";
+import cors from "cors";
 const app = express();
+app.use(cors());
 const port = process.env.PORT || 8080;
 await databaseConfig.connectToDatabase();
 app.listen(port,() => {
