@@ -12,16 +12,8 @@ async function createTransporter(){
     oauth2Client.setCredentials({
         refresh_token: process.env.REFRESH_TOKEN
     });
-    const accessToken = await new Promise((resolve, reject) => {
-        oauth2Client.getAccessToken((err, token) => {
-            if (err) {
-                console.log(err);
-                // resolve(process.env.ACCESS_TOKEN);
-                reject("Failed to create access token");
-            }
-            resolve(token);
-        });
-    });
+    const accessTokenObject = await oauth2Client.getAccessToken();
+    const accessToken = accessTokenObject?.token || accessTokenObject;
     const transporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
