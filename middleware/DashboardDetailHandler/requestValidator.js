@@ -2,7 +2,7 @@ import userProfileModel from "../../model/UserProfileModel/userProfileModel.js";
 async function requestValidator(request,response,next){
     try{
         const {walletAddress} = request.body;
-        const ethAddressRegex = /^0x[a-fA-F0-9]{40}$/;
+        const ethAddressRegex = /^0X[a-fA-F0-9]{40}$/;
         if (!ethAddressRegex.test(walletAddress)) {
             return response.status(400).json({
                 responseMessage: "Invalid Request Payload: Wallet Address is Invalid"
